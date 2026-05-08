@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dependency Parser</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        textarea {
+            width: 500px;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .output {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Dependency Parsing using Stanza NLP</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <textarea
+            name="text"
+            placeholder="Enter a sentence here..."
+        ></textarea>
+
+        <br><br>
+
+        <label><b>Select Language:</b></label>
+
+        <select name="language">
+
+            <option value="en">English</option>
+
+            <option value="hi">Hindi</option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Parse Sentence</button>
+
+    </form>
+
+    {% if result %}
+
+    <div class="output">
+
+        <h2>Dependency Relations</h2>
+
+        <ul>
+
+            {% for item in result %}
+
+                <li>{{ item }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <h2>Dependency Tree</h2>
+
+        <ul>
+
+            {% for node in tree %}
+
+                <li>{{ node }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    {% endif %}
+
+</body>
+</html>
