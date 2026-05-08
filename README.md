@@ -209,7 +209,7 @@ Dependency Tree:
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/dependency-parsing-nlp.git
+git clone https://github.com/Siriyadav04/dependency-parsing-nlp.git
 cd dependency-parsing-nlp
 ```
 
